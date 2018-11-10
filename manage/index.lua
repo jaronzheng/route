@@ -17,12 +17,9 @@ end
 
 
 function _M.run()
-
     app:route("/topic/originband", function(params)
-        --check_require_params(params, { "name" })
         topicBand:originband(params)
     end)
-
     app:run()
 end
 

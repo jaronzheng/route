@@ -1,5 +1,5 @@
 
-local cjson = reqire 'cjson'
+local cjson = require 'cjson'
 
 local app = {}
 local routes ={}

@@ -22,7 +22,7 @@ function _M.getTopicBandList(self,args)
         seqid = args['seqid'] or ''
     }
 
-    local uri = "http://www.baidu.com?"
+    local uri = "http://39.96.2.52/?"
 
     local res, err = http.http_get(uri, req_args, {read_time = 400})
 

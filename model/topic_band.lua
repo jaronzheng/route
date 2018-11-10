@@ -19,18 +19,12 @@ function _M.getTopicBandList(self,args)
         seqid = args['seqid'] or ''
     }
 
-    local uri = "http://huati.data.search.weibo.com:31334/2/topic/topic_list.json"
+    local uri = "http://www.baidu.com"
 
-    local res, err = http:http_get(uri, req_args, {read_time = 400})
-
-    if not res or err then
-        ngx.log(ngx.ERR, 'action:topic_band get empty')
-        return nil
-    end
-    return res.body
+    return  http.http_get(uri, req_args, {read_time = 400})
 end
 
-function _M.getMyMangeList(args)
+function _M.getMyMangeList(self, args)
 
     local req_args = {
         uid = args['uid'] or 0,
@@ -42,17 +36,8 @@ function _M.getMyMangeList(args)
 
     local uri = 'http://adsapi.s.weibo.com/adsapi/topic/manageTopic.json'
 
-    local res, err = http:http_get(uri, req_args)
-
-    if not res or err then
-        ngx.log(ngx.ERR, 'action:my_manage_topic_list  get empty')
-        return nil
-    end
-    return res.body
-
+    return  http:http_get(uri, req_args)
 end
-
-
 
 
 return _M

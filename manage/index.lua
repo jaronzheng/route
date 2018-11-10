@@ -1,6 +1,6 @@
 local cjson = require "cjson"
 local app = require 'manage.app'
-local topicBand = require 'serive.topic_band'
+local topicBand = require 'service.topic_band'
 
 local _M = {}
 
@@ -15,9 +15,8 @@ function _M.check_require_params(params, names)
     end
 end
 
-
 function _M.run()
-    app:route("/topic/originband", function(params)
+    app:route("/topic/originband.json", function(params)
         topicBand:originband(params)
     end)
     app:run()

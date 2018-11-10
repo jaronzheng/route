@@ -1,5 +1,5 @@
 
-local cjson = require "cjson"
+
 local app = {}
 local routes ={}
 function app:route(route, func)
@@ -33,7 +33,7 @@ function app:run()
         ngx.status = 404
     end
     ngx.header.content_type = 'application/json;charset=UTF-8';
-    ngx.say(cjson.encode(response))
+    ngx.say(response)
 end
 
 return app

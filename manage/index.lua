@@ -17,7 +17,7 @@ end
 
 function _M.run()
     app:route("/topic/originband.json", function(params)
-        topicBand:originband(params)
+        return topicBand:originband(params)
     end)
     app:run()
 end

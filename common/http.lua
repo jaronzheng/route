@@ -25,8 +25,6 @@ function _M.http_get(url, args, options)
     local httpc = http.new()
     httpc:set_timeouts(connect_time, send_time, read_time)
 
-    url = url .. ngx.encode_args(args)
-
     local res, err = httpc:request_uri(url, {
         headers = headers
     })
@@ -34,7 +32,7 @@ function _M.http_get(url, args, options)
         return res, err
     end
     httpc:set_keepalive(1000, 100)
-    return res
+    return res.body
 end
 
 return _M

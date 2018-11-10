@@ -11,6 +11,9 @@ end
 
 --话题榜
 function _M.getTopicBandList(self,args)
+
+    args = args or {}
+
     local req_args = {
         uid = args['uid'] or 0,
         count = args['count'] or 40,
@@ -19,9 +22,11 @@ function _M.getTopicBandList(self,args)
         seqid = args['seqid'] or ''
     }
 
-    local uri = "http://www.baidu.com"
+    local uri = "http://www.baidu.com?"
 
-    return  http.http_get(uri, req_args, {read_time = 400})
+    local res, err = http.http_get(uri, req_args, {read_time = 400})
+
+    return res
 end
 
 function _M.getMyMangeList(self, args)
@@ -36,7 +41,9 @@ function _M.getMyMangeList(self, args)
 
     local uri = 'http://adsapi.s.weibo.com/adsapi/topic/manageTopic.json'
 
-    return  http:http_get(uri, req_args)
+    local res, err = http:http_get(uri, req_args)
+
+    return res
 end
 
 

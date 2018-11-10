@@ -1,4 +1,5 @@
 
+local cjson = reqire 'cjson'
 
 local app = {}
 local routes ={}
@@ -25,15 +26,15 @@ function app:run()
     local response = {}
     if routes[ngx.var.uri]~= nil then
         local res, err, errno = routes[ngx.var.uri](params)
-        response = res
-
+        ngx.print(res)
+        do return end
     else
         response["status"] = 404
         response["msg"] = "api not found"
         ngx.status = 404
     end
-    ngx.header.content_type = 'application/json;charset=UTF-8';
-    ngx.say(response)
+
+    ngx.say(cjson.encode(response))
 end
 
 return app

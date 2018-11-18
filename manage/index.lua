@@ -16,8 +16,12 @@ function _M.check_require_params(params, names)
 end
 
 function _M.run()
-    app:route("/topic/originband.json", function(params)
-        return topicBand:originband(params)
+    app:route("/test", function(params)
+        return topicBand:test(params)
+    end)
+
+    app:route('/test1', function(params)
+        return topicBand:test1(params)
     end)
     app:run()
 end
